@@ -38,7 +38,6 @@ const Products = () => {
             setQuantities(defaultQuantities);
         } catch (error) {
             console.error('Error fetching products:', error);
-            // Handle error, e.g., show an error message to the user
         }
     };
 
@@ -58,7 +57,6 @@ const Products = () => {
             setOrder(data);
         } catch (error) {
             console.error('Error fetching order:', error);
-            // Handle error, e.g., show an error message to the user
         }
     };
 
@@ -77,10 +75,8 @@ const Products = () => {
             }
             const updatedOrder = await response.json();
             setOrder(updatedOrder);
-            // Optionally, you can handle success, e.g., show a success message
         } catch (error) {
             console.error('Error adding product to cart:', error);
-            // Optionally, you can handle errors, e.g., show an error message to the user
         }
     };
 

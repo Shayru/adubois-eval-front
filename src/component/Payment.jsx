@@ -7,7 +7,6 @@ const Payment = () => {
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
-        // Fetch order details from the backend when the component mounts
         const fetchOrder = async () => {
             try {
                 const response = await fetch(`http://localhost:8000/api/orders/${orderId}`, {
@@ -24,7 +23,6 @@ const Payment = () => {
                 setOrder(data);
             } catch (error) {
                 console.error('Error fetching order details:', error);
-                // Handle error, e.g., show an error message to the user
             }
         };
 
@@ -32,11 +30,9 @@ const Payment = () => {
     }, [orderId]);
 
     const handleConfirmPayment = async () => {
-        // Implement logic to confirm payment
         try {
-            // Call backend route to confirm payment
-            const response = await fetch(`http://localhost:8000/api/orders/${orderId}/confirm-payment`, {
-                method: 'POST',
+            const response = await fetch(`http://localhost:8000/api/orders/${orderId}/pay`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('user')}`
@@ -47,11 +43,9 @@ const Payment = () => {
                 throw new Error('Failed to confirm payment');
             }
 
-            // Redirect to a success page after successful payment
-            navigate(`/payment-success/${orderId}`);
+            navigate(`/home/`);
         } catch (error) {
             console.error('Error confirming payment:', error);
-            // Handle error, e.g., show an error message to the user
         }
     };
 
@@ -70,7 +64,6 @@ const Payment = () => {
             <div className="mb-4">
                 <p>Order ID: {orderId}</p>
                 <p>Total Amount: ${order.total}</p>
-                {/* Display other order details as needed */}
             </div>
             <div className="flex justify-between">
                 <div className="-ml-2">

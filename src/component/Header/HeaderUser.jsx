@@ -1,11 +1,9 @@
-import fun from '../../assets/funnnnnny.png';
 import { Link } from "react-router-dom";
 
 const HeaderUser = () => {
     return (
         <header className="flex items-center justify-between p-4 bg-gray-800 text-white w-full top-0 fixed">
             <div className="flex items-center">
-                {/*<img src={fun} alt="Logo" className="mr-4 w-14 h-14"/>  /!* Augmenter la taille du logo *!/*/}
                 <h1 className="text-xl font-bold">Shop</h1>
             </div>
             <nav>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 const DashboardProductsCreate = () => {
     const [formData, setFormData] = useState({
@@ -52,10 +51,8 @@ const DashboardProductsCreate = () => {
 
 
     useEffect(() => {
-        // Bloque le scroll en ajoutant une classe au bod
         document.body.classList.add('overflow-hidden');
 
-        // Enlève la classe au démontage du composant
         return () => {
             document.body.classList.remove('overflow-hidden');
         };

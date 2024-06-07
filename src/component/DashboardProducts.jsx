@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom'; // Importer Link depuis react-router-dom
 
 const DashboardProducts = () => {
     const [products, setProducts] = useState([]);
@@ -26,10 +25,9 @@ const DashboardProducts = () => {
                 throw new Error('Failed to fetch products');
             }
             const data = await response.json();
-            setProducts(data); // Update products state with fetched data
+            setProducts(data);
         } catch (error) {
             console.error('Error fetching products:', error);
-            // Handle error, e.g., show an error message to the user
         }
     };
 
@@ -61,8 +59,6 @@ const DashboardProducts = () => {
             <h1 className="text-3xl font-bold mb-4 text-center">Products</h1>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {currentProducts.map((product) => (
-                    // <Link key={product.id} to={`/product/${product.id}`} className="w-full">
-                    // eslint-disable-next-line react/jsx-key
                     <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-solid border-black"
                          style={{borderColor: `#${product.color}`}}>
                         <img className="w-full h-40 object-cover" src={product.image} alt={product.name}/>
@@ -75,7 +71,6 @@ const DashboardProducts = () => {
                             </button>
                         </div>
                     </div>
-                    // </Link>
                 ))}
             </div>
             <div className="mt-8 flex justify-center mb-8">
