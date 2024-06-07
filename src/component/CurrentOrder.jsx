@@ -17,15 +17,21 @@ const CurrentOrder = ({ order, setOrder }) => {
                 throw new Error('Failed to remove product from cart');
             }
             // Update order state to reflect changes
-            setOrder({
+            const updatedOrder = {
                 ...order,
                 products: order.products.filter(product => product.id !== productId)
-            });
+            };
+            // Recalculate total
+            const newTotal = updatedOrder.products.reduce((acc, product) => {
+                return acc + (product.product.price * product.quantity);
+            }, 0);
+            updatedOrder.total = newTotal.toFixed(2); // Update the total
+            setOrder(updatedOrder);
         } catch (error) {
             console.error('Error removing product from cart:', error);
             // Handle error, e.g., show an error message to the user
         }
-        }
+    }
 
     const handleCheckout = () => {
         navigate(`/checkout/${order.id}`);

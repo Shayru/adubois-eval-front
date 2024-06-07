@@ -46,8 +46,8 @@ function App() {
                   <Route path="/inscription" element={<InscriptionPage />} />
                   <Route path="/products" element={<ProtectedRoute redirectTo="/"><ProductsPage /></ProtectedRoute>} />
                   <Route path="/orders" element={<ProtectedRoute redirectTo="/"><OrdersPage /></ProtectedRoute>} />
-                  <Route path="/checkout/:orderId" element={<CheckoutPage />} />
-                  <Route path="/payment/:orderId" element={<PaymentPage />} />
+                  <Route path="/checkout/:orderId" element={<ProtectedRoute redirectTo="/"><CheckoutPage /></ProtectedRoute>} />
+                  <Route path="/payment/:orderId" element={<ProtectedRoute redirectTo="/"><PaymentPage /></ProtectedRoute>} />
                   <Route path="*" element={<Navigate to="/" />} />
               </Routes>
           </BrowserRouter>
